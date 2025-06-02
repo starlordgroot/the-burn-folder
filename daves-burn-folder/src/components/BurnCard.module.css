@@ -1,0 +1,13 @@
+.card {
+  padding: 2rem;
+  background: #1a1a1a;
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
