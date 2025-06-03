@@ -1,0 +1,69 @@
+.glitch-container {
+  display: inline-block;
+  position: relative;
+}
+
+.glitch-base,
+.glitch-layer {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  image-rendering: pixelated;
+}
+
+.glitch-base {
+  position: relative;
+  z-index: 1;
+}
+
+.glitch-layer {
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.glitch-layer-0 {
+  animation: glitch-flicker-0 1.3s infinite linear;
+}
+
+.glitch-layer-1 {
+  animation: glitch-flicker-1 1.8s infinite linear;
+}
+
+.glitch-layer-2 {
+  animation: glitch-flicker-2 2s infinite linear;
+}
+
+@keyframes glitch-flicker-0 {
+  0% { transform: translate(0); opacity: 0.4; }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+  100% { transform: translate(0); opacity: 0.4; }
+}
+
+@keyframes glitch-flicker-1 {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-3px); }
+  50% { transform: translateX(2px); }
+  90% { transform: translateX(-2px); }
+}
+
+@keyframes glitch-flicker-2 {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(2px); }
+  75% { transform: translateX(-3px); }
+}
+
+.hover-only .glitch-layer {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hover-only:hover .glitch-layer {
+  opacity: 0.6;
+}
