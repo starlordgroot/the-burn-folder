@@ -1,6 +1,6 @@
-import './App.css'
-import logo from './assets/logo_3.png'
-import cover from './assets/album-art.png'
+import './App.css';
+import logo from './assets/logo_3.png';
+import cover from './assets/album-art.png';
 
 function App() {
   return (
@@ -9,14 +9,14 @@ function App() {
         <img src={logo} alt="Dave's Burn Folder" className="logo" />
       </header>
 
-        <div className="nav-bar">
-          <nav className="nav-container">
-            <a href="#">The Playlist</a>
-            <a href="#">FAQ</a>
-            <a href="#">Send in a Song</a>
-            <a href="#">Contact</a>
-          </nav>
-        </div>
+      <div className="nav-bar">
+        <nav className="nav-container">
+          <a href="#">The Playlist</a>
+          <a href="#">FAQ</a>
+          <a href="#">Send in a Song</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
 
       <main className="content">
         <div className="music-card">
@@ -27,6 +27,8 @@ function App() {
             <span className="tag">Rock</span>
           </div>
         </div>
+
+
         <div className="blurb">
           <p>This one hit me like a bus on a rainy Tuesday.</p>
         </div>
@@ -38,7 +40,7 @@ function App() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
