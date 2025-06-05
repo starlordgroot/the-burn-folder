@@ -331,6 +331,8 @@ body::after {
   opacity: 0.85;
   animation: fadeOut 1.5s forwards;
 }
+
+
 /* .fire-overlay::before {
   content: '';
   position: absolute;
@@ -354,4 +356,99 @@ body::after {
 @keyframes fadeOut {
   0% { opacity: 0.85; }
   100% { opacity: 0; }
+}
+
+
+/* 🔲 Chrome-style fake popup */
+.fake-popup {
+  width: 320px;
+  background: #2e2e2e;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-family: sans-serif;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.popup-header {
+  background: #1a1a1a;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.close-btn {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.popup-body {
+  padding: 12px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.popup-body .warning {
+  display: block;
+  margin-top: 0.5rem;
+  color: #f5cb46;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px;
+  gap: 8px;
+  background: #222;
+}
+
+.popup-buttons button {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 2px;
+}
+
+.popup-buttons button:hover {
+  background: #666;
+}
+
+/* 🪟 FAKE ACTIVATE WINDOWS OVERLAY */
+.activate-windows {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 1.5rem;
+  color: rgba(143, 143, 143, 0.76);
+  text-align: right;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  pointer-events: none;
+  user-select: none;
+  animation: flickerGlitch 10s infinite ease-in-out;
+  z-index: 9000;
+}
+
+.activate-windows:hover {
+  animation: glitch 2s infinite;
+  animation-delay: 1s;
+}
+
+
+/* ✨ Glitch flicker effect */
+@keyframes flickerGlitch {
+  0%, 95%, 100% { opacity: 0.15; transform: none; }
+  50.1% { opacity: 0.6; transform: translateX(-1px) scale(1.01) skewX(1deg); }
+  50.2% { opacity: 0.2; transform: translateX(1px) scale(0.98) skewX(-1deg); }
 }
