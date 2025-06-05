@@ -1,10 +1,19 @@
 import './App.css';
 import logo from './assets/logo_3.png';
-import cover from './assets/album-art.png';
-import { useEffect } from 'react';
+import cover from './assets/album-art2.png';
+import pick from './assets/pick.png';
+import { useEffect, useState } from 'react';
 import { PowerGlitch } from 'powerglitch';
+import fireGif from './assets/fireball-loop.gif';
 
 function App() {
+  const [showFire, setShowFire] = useState(false);
+
+  const handleStickerClick = () => {
+    setShowFire(true);
+    setTimeout(() => setShowFire(false), 1500); // show fire for 1.5 seconds
+  };
+
   useEffect(() => {
     PowerGlitch.glitch('.logo', {
       playMode: 'hover',
@@ -27,73 +36,86 @@ function App() {
         minHeight: 0.01,
         maxHeight: 0.04,
         hueRotate: true,
-        offset: 30 
+        offset: 30,
       },
     });
   }, []);
 
   useEffect(() => {
-  PowerGlitch.glitch('.music-card', {
-    playMode: 'always', // 🔁 Always on
-    createContainers: true,
-    hideOverflow: false,
-    timing: {
-      duration: 10000,        // Longer animation cycle
-      iterations: Infinity,
-      easing: 'ease-out	',
-    },
-    glitchTimeSpan: { start: 0.01, end: 0.05 }, // Smaller glitch window within each cycle
-    shake: {
-      velocity: 1,
-      amplitudeX: 0.005,     // Very light horizontal jitter
-      amplitudeY: 0.005,     // Very light vertical jitter
-    },
-    slice: {
-      count: 10,
-      velocity: 5,
-      minHeight: 0.005,
-      maxHeight: 0.005,
-      hueRotate: true,      // You can turn this on if you want color flicker
-      offset: 5
-    },
-  });
-}, []);
+    PowerGlitch.glitch('.music-card', {
+      playMode: 'always',
+      createContainers: true,
+      hideOverflow: false,
+      timing: {
+        duration: 10000,
+        iterations: Infinity,
+        easing: 'ease-out',
+      },
+      glitchTimeSpan: { start: 0.01, end: 0.05 },
+      shake: {
+        velocity: 1,
+        amplitudeX: 0.005,
+        amplitudeY: 0.005,
+      },
+      slice: {
+        count: 10,
+        velocity: 5,
+        minHeight: 0.005,
+        maxHeight: 0.005,
+        hueRotate: true,
+        offset: 5,
+      },
+    });
+  }, []);
 
   return (
     <div className="app">
-      <marquee>🔥 New drop every Monday! Submit yours! 🔥</marquee>
-      <br />
-      <header className="logo-wrap">
-        <img src={logo} alt="Dave's Burn Folder" className="logo" />
-      </header>
+      <div className="frame-box">
+        <marquee>🔥 New drop every Monday! Submit yours! 🔥</marquee>
 
-      <div className="nav-bar">
-        <nav className="nav-container">
-          <a href="#">SPOTIFY_PLAYLIST</a>
-          <a href="#">SUBMIT_A_SONG</a>
-          <a href="#">FAQ</a>
-          <a href="#">CONTACT</a>
-        </nav>
-      </div>
+        <header className="logo-wrap">
+          <img src={logo} alt="Dave's Burn Folder" className="logo" />
+        </header>
 
-      <main className="content">
-        <div className="music-card">
-          <img src={cover} alt="Album Art" className="album-art" />
-          <div className="song-info">
-            <h2>Jumper</h2>
-            <p>Third Eye Blind</p>
-            <span className="tag">Rock</span>
+        <div className="nav-bar">
+          <nav className="nav-container">
+            <a href="#">SPOTIFY_PLAYLIST</a>
+            <a href="#">SUBMIT_A_SONG</a>
+            <a href="#">FAQ</a>
+            <a href="#">CONTACT</a>
+          </nav>
+        </div>
+
+        <main className="content">
+          <div className="music-card">
+            <div className="sticker-badge" onClick={handleStickerClick}>
+              <img src={pick} alt="Editor's Pick" className="sticker-image" />
+            </div>
+
+            <img src={cover} alt="Album Art" className="album-art" />
+
+            <div className="song-info">
+              <h2>Jumper</h2>
+              <p>Third Eye Blind</p>
+              <span className="tag">Rock</span>
+            </div>
           </div>
-        </div>
 
-        <div className="blurb">
-          <p>This one hit me like a bus on a rainy Tuesday.</p>
-        </div>
-      </main>
+          <div className="blurb">
+            <p>This one hit me like a bus on a rainy Tuesday.</p>
+          </div>
+        </main>
 
-      <footer className="player-footer">
-        <span>📁 5 Tracks loaded | 🟢 Connected | 🔊 80%</span>
-      </footer>
+        <footer className="player-footer">
+          <span>📁 5 Tracks loaded | 🟢 Connected | 🔊 80%</span>
+        </footer>
+
+        {showFire && (
+          <div className="fire-overlay">
+            <img src={fireGif} alt="Fire effect" className="fire-gif" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
